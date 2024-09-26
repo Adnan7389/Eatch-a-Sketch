@@ -13,11 +13,19 @@ function populateBoard(gridSize) {
     cell.style.backgroundColor = "blue";
 
     cell.addEventListener('mouseover', () => {
-      cell.style.backgroundColor = 'black';
+      const randomColor = getRandomColor();
+      cell.style.backgroundColor = randomColor;
     });
     container.appendChild(cell);
   }
 
+}
+
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 populateBoard(16);

@@ -11,10 +11,17 @@ function populateBoard(gridSize) {
   for (let i = 0; i < amount; i++) {
     const cell = document.createElement('div');
     cell.style.backgroundColor = "blue";
+    cell.style.opacity = '0.1';
+    cell.style.border = '1px solid lightgray';
 
     cell.addEventListener('mouseover', () => {
       const randomColor = getRandomColor();
       cell.style.backgroundColor = randomColor;
+
+      let currentOpacity = parseFloat(cell.style.opacity);
+      if (currentOpacity < 1) {
+        cell.style.opacity = (currentOpacity + 0.1).toFixed(1);
+      }
     });
     container.appendChild(cell);
   }
